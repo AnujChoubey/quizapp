@@ -26,7 +26,7 @@ class _WilcoteckState extends State<Wilcoteck> {
       ],
     },
     {
-      'questionText': 'What\'s your favourite animal?',
+      'questionText': 'What is your favourite beast?',
       'answers': [
         {'text': 'Dragon', 'score': 10},
         {'text': 'Hydra', 'score': 8},
@@ -43,9 +43,21 @@ class _WilcoteckState extends State<Wilcoteck> {
         {'text': 'Air', 'score': 6},
       ],
     },
+    {
+      'questionText': 'Tap to display results!!',
+      'answers': [
+        {'text': 'REVEAL!'},
+      ]
+    },
   ];
   var _questionIndex = 0;
   var _totalScore = 0;
+
+  void _resetQuiz() {
+    setState(() {});
+    _questionIndex = 0;
+    _totalScore = 0;
+  }
 
   void _answerQuestion(int score) {
     setState(() {
@@ -74,8 +86,10 @@ class _WilcoteckState extends State<Wilcoteck> {
 
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text('WILCOTECK'),
+          title: Text('CRIMSON CRYSTAL'),
+          backgroundColor: Colors.black,
         ),
         body: _questionIndex < _questions.length
             ? Quiz(
@@ -83,7 +97,7 @@ class _WilcoteckState extends State<Wilcoteck> {
                 questionIndex: _questionIndex,
                 questions: _questions,
               )
-            : Result(_totalScore),
+            : Result(_totalScore,_resetQuiz),
       ),
     );
   }

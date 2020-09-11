@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
   final int resultScore;
+  final Function resetHandler;
 
-  Result(this.resultScore);
+  Result(this.resultScore, this.resetHandler);
 
   String get resultPhrase {
     String resultText;
@@ -29,6 +30,11 @@ class Result extends StatelessWidget {
             style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
+          FlatButton(
+            child: Text('Restart?'),
+            textColor: Colors.blue,
+            onPressed: resetHandler,
+          )
         ],
       ),
     );
